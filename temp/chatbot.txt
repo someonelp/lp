@@ -1,0 +1,55 @@
+#chatbot
+
+import random
+# Function to generate a random greeting
+def get_random_greeting():
+    greetings = [
+        "Hello!",
+        "Hi there!",
+        "Greetings!",
+        "Hey, how can I help you?"
+    ]
+    return random.choice(greetings)
+
+# Function to generate a random farewell
+def get_random_farewell():
+    farewells = [
+        "Goodbye!",
+        "Farewell!",
+        "Take care!",
+        "See you later!"
+    ]
+    return random.choice(farewells)
+
+def get_order():
+    order = [
+        "What would u like to order?"
+        
+    ]
+
+# Function to get a response from the chatbot
+def get_chatbot_response(user_input):
+    # Check for greetings
+    if "hello" in user_input.lower() or "hi" in user_input.lower():
+        return get_random_greeting()
+
+    # Check for farewells
+    if "bye" in user_input.lower() or "goodbye" in user_input.lower():
+        return get_random_farewell()
+
+    # If no predefined response matches, provide a default response
+    return "I'm sorry, I don't understand. Can you please rephrase your question or statement?"
+
+
+# Chatbot interaction loop
+print("Chatbot: " + get_random_greeting())
+
+while True:
+    user_input = input("User: ")
+
+    if user_input.lower() == 'exit':
+        print("Chatbot: " + get_random_farewell())
+        break
+    else :
+        chatbot_response = get_chatbot_response(user_input)
+        print("Chatbot: " + chatbot_response)

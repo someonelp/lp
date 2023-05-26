@@ -1,0 +1,21 @@
+#selection-sort
+
+def selectionsort(arr,size):
+    
+    for i in range(size):
+        min_index=i
+        for j in range(i+1, size):
+            if(arr[j]<arr[min_index]):
+                min_index=j
+        #swap
+        arr[i],arr[min_index]=arr[min_index],arr[i]
+    return arr
+    
+#usage
+arr=[20,10,5,7,1,2,0]
+
+sorted_array=selectionsort(arr,len(arr))
+print(sorted_array)
+
+
+

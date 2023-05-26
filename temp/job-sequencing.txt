@@ -1,0 +1,40 @@
+#job-sequencing
+
+
+def printJobScheduling(arr, t):
+    n = len(arr)
+    for i in range(n):
+        for j in range(n - 1 - i):
+            if arr[j][2] < arr[j + 1][2]:
+                arr[j], arr[j + 1] = arr[j + 1], arr[j]
+  
+    result = [False] * t
+    job = ['-1'] * t
+    maxProd=0
+    for i in range(len(arr)):
+        for j in range(min(t - 1, arr[i][1] - 1), -1, -1):
+            if result[j] is False:
+                result[j] = True
+                job[j] = arr[i][0]
+                maxProd+=jobs[i][2]
+                break
+  
+    print(job)
+    print(maxProd)
+   
+
+
+
+
+jobs = [
+    ("J1", 2, 60),
+    ("J2", 1, 100),
+    ("J3", 3, 20),
+    ("J4", 2, 40),
+    ("J5", 1, 20)
+]
+
+max_deadline = 3
+
+printJobScheduling(jobs, max_deadline)
+

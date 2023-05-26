@@ -1,0 +1,47 @@
+#N-queen 
+
+def is_safe(arr, x, y, n):
+    for row in range(x):
+        if arr[row][y] == 1:
+            return False
+    row = x
+    col = y
+    while row >= 0 and col >= 0:
+        if arr[row][col] == 1:
+            return False
+        row -= 1
+        col -= 1
+    row = x
+    col = y
+    while row >= 0 and col < n:
+        if arr[row][col] == 1:
+            return False
+        row -= 1
+        col += 1
+    return True
+
+
+def nQueen(arr, x, n):
+    if x >= n:
+        return True
+    for col in range(n):
+        if is_safe(arr, x, col, n):
+            arr[x][col] = 1
+            if nQueen(arr, x + 1, n):
+                return True
+            arr[x][col] = 0
+    return False
+
+
+# Example usage
+size = 4
+arr = [[0] * size for _ in range(size)]
+
+if nQueen(arr, 0, size):
+    for row in arr:
+        for element in row:
+            print(element, end=' ')
+        print()
+else:
+    print("No solution exists for the given size.")
+
